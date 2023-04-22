@@ -38,7 +38,7 @@ export const useMintNFTStore = defineStore('MintNFTStore', {
                 return result.cid.toString()
 
             } catch (err) {
-                console.error(err)
+                // console.error(err)
             }
         },
 
@@ -55,9 +55,35 @@ export const useMintNFTStore = defineStore('MintNFTStore', {
                 console.log("Metadata uploaded: " + result.cid.toString())
                 return result.cid.toString()
             } catch (err) {
-                console.error(err)
+                // console.error(err)
             }
+        },
+
+        // UPLOAD TO BACKEND
+        async uploadToBackend(nftOwnerAddress, nftContract, tokenId, name, description, ipfsHashImage, ipfsHashMetadata) {
+            const url = 'http://localhost:8080/api/v1/nft/mint-nft';
+            const data = {
+                nftOwnerAddress: nftOwnerAddress,
+                nftContract: nftContract,
+                tokenId: tokenId,
+                name: name,
+                description: description,
+                ipfsHashImage: ipfsHashImage,
+                ipfsHashMetadata: ipfsHashMetadata,
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+                .catch((error) => console.error(error));
         }
+
 
     }
 })

@@ -3,6 +3,7 @@ import { useMintNFTStore } from '../stores/mintNFT.js';
 import { useCryptoStore } from '../stores/crypto.js';
 import { ref } from 'vue'
 
+
 const mintNFTStore = useMintNFTStore();
 const cryptoStore = useCryptoStore();
 
@@ -13,6 +14,7 @@ const nameNFT = ref(null);
 const descriptionNFT = ref(null);
 const tokenID = ref(null);
 
+// FOR PREVIEW PURPOSE ONLY
 async function onFileSelect(event) {
   try {
     file.value = event.target.files[0]
@@ -29,22 +31,21 @@ async function onFileSelect(event) {
   }
 }
 
-// const metadata = {
-//   name: 'My NFT',
-//   description: 'This is my first NFT',
-//   image: 'https://example.com/image.jpg'
-// }
+//FOR PROGRESS LOADING
+const isLoading = ref(false);
 
 async function mintNFT() {
   const imageHASH = await mintNFTStore.uploadFile(file.value)
+
   const metadata = {
     name: nameNFT.value,
     description: descriptionNFT.value,
     image: "https://ipfs.io/ipfs/" + imageHASH,
   }
   const metadataHash = await mintNFTStore.uploadMetadata(metadata)
-  const result = await cryptoStore.mintAndApprovalNFT(tokenID.value, metadataHash)
-  console.log(result)
+
+  await cryptoStore.mintAndApprovalNFT(tokenID.value, metadataHash)
+  await mintNFT.uploadToBackend(cryptoStore.account, cryptoStore.NFTTokenContractAddress, tokenID.value, nameNFT.value, descriptionNFT.value, imageHASH, metadataHash)
 }
 
 
@@ -98,6 +99,7 @@ async function mintNFT() {
           Mint NFT
         </button>
       </div>
+
 
     </form>
   </div>

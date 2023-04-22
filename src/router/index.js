@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import ListAuctionView from '../views/ListAuctionView.vue'
 import MintNFTView from '../views/MintNFTView.vue'
+import CreateAuctionView from '../views/CreateAuctionView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,15 +15,21 @@ const router = createRouter({
     },
 
     {
-      path: '/about',
-      name: 'about',
-      component: AboutView
+      path: '/auctionlist',
+      name: 'auctionlist',
+      component: ListAuctionView
     },
 
     {
       path: '/mintnft',
       name: 'mintnft',
       component: MintNFTView
+    },
+
+    {
+      path: '/createauction',
+      name: 'createauction',
+      component: CreateAuctionView,
     },
   ]
 })

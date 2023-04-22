@@ -68,11 +68,11 @@ export const useCryptoStore = defineStore('cryptoStore', {
                     this.loading = false;
 
                 } catch (error) {
-                    console.error(error)
+                    // console.error(error)
                     this.loading = false
                 }
             } else {
-                console.error('MetaMask not found')
+                // console.error('MetaMask not found')
                 this.loading = false
             }
         },
@@ -85,7 +85,7 @@ export const useCryptoStore = defineStore('cryptoStore', {
                             from: this.account,
                         }
                     );
-                console.log('NFT minted and approval set:\n' + result);
+                return result;
             } catch (error) {
                 console.error(error);
             }
