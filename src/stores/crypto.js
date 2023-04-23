@@ -15,9 +15,9 @@ export const useCryptoStore = defineStore('cryptoStore', {
             TestSMCContract: null,
             BQKTokenContract: null,
             NFTTokenContract: null,
-            TestSMCContractAddress: '0xac4b8673B5f05A511486760faBdA7b49E62Da5f0',
-            BQKTokenContractAddress: '0x1C89D7F4Aa64AFC56b1Fc10950DE506529DF38D5',
-            NFTTokenContractAddress: '0xE7d7aed64e4d74D7fA46f92d25942436576A9C57',
+            TestSMCContractAddress: '0x3eD53CD7197C5eb9d3157101620384139d74CED3',
+            BQKTokenContractAddress: '0x82e07ff4b6d756f0537D4B09f3b722c249296C04',
+            NFTTokenContractAddress: '0x623FDdb7FB8cB703b1bCD3ba33A809CFCe8BAc52',
             // NFT
             totalSupply: null,
 
@@ -89,6 +89,31 @@ export const useCryptoStore = defineStore('cryptoStore', {
             } catch (error) {
                 console.error(error);
             }
+        },
+
+        // Create New Auction SMC
+        async createNewAuction(nftContract, tokenId, initialPrice, openBiddingTime, closeBiddingTime) {
+            try {
+                const result = await this.TestSMCContract.methods.createNewAuction(nftContract, tokenId, initialPrice, openBiddingTime, closeBiddingTime)
+                    .send(
+                        {
+                            from: this.account,
+                        }
+                    );
+                return result;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        // Create New Auction - Upload to Backend
+        async createNewAuctioToBackend(transactionHash) {
+            const url = 'http://localhost:8080/api/v1/bidnow/create-new-auction?transactionHash=' + transactionHash;
+            fetch(url, {
+                method: 'POST',
+            })
+                .then((response) => response.json())
+                .catch((error) => console.error(error));
         }
     }
 })

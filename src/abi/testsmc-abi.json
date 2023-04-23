@@ -1,79 +1,297 @@
 [
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_tokenContract",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
 				"indexed": false,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
 			},
 			{
 				"indexed": false,
 				"internalType": "address",
-				"name": "to",
+				"name": "spender",
 				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "offeredPrice",
 				"type": "uint256"
 			}
 		],
-		"name": "sendToken",
+		"name": "BiddingAuctionEvent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "ownerOfAuction",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "nftContract",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "initialPrice",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "openBiddingTime",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "closeBiddingTime",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "statusAuction",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "transferAssetStatus",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
+			}
+		],
+		"name": "CancelingAuctionEvent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "ownerOfAuction",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "nftContract",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "initialPrice",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "openBiddingTime",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "closeBiddingTime",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "statusAuction",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "transferAssetStatus",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
+			}
+		],
+		"name": "CreatingAuctionEvent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "transferAssetStatus",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferingAssetEvent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "statusAuction",
+				"type": "string"
+			}
+		],
+		"name": "updatingStatusAuctionEvent",
 		"type": "event"
 	},
 	{
 		"inputs": [
 			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
 			}
 		],
-		"name": "greeting",
-		"outputs": [
+		"name": "CancelAuction",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
 			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "offeredPrice",
+				"type": "uint256"
 			}
 		],
-		"stateMutability": "pure",
+		"name": "bidAuction",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
+				"name": "nftContract",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "tokenId",
 				"type": "uint256"
 			},
 			{
-				"internalType": "address",
-				"name": "tokenContract",
-				"type": "address"
-			}
-		],
-		"name": "transfer",
-		"outputs": [
+				"internalType": "uint256",
+				"name": "initialPrice",
+				"type": "uint256"
+			},
 			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
+				"internalType": "uint256",
+				"name": "openBiddingTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "closeBiddingTime",
+				"type": "uint256"
 			}
 		],
+		"name": "createNewAuction",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "openBiddingTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "closeBiddingTime",
+				"type": "uint256"
+			}
+		],
+		"name": "setOpenBiddingTime",
+		"outputs": [],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "uuid",
+				"type": "uint256"
+			}
+		],
+		"name": "transferAssetAfterAuctionEnd",
+		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	}

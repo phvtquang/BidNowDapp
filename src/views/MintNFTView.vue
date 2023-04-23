@@ -31,8 +31,6 @@ async function onFileSelect(event) {
   }
 }
 
-//FOR PROGRESS LOADING
-const isLoading = ref(false);
 
 async function mintNFT() {
   const imageHASH = await mintNFTStore.uploadFile(file.value)
@@ -45,7 +43,7 @@ async function mintNFT() {
   const metadataHash = await mintNFTStore.uploadMetadata(metadata)
 
   await cryptoStore.mintAndApprovalNFT(tokenID.value, metadataHash)
-  await mintNFT.uploadToBackend(cryptoStore.account, cryptoStore.NFTTokenContractAddress, tokenID.value, nameNFT.value, descriptionNFT.value, imageHASH, metadataHash)
+  await mintNFTStore.uploadToBackend(cryptoStore.account, cryptoStore.NFTTokenContractAddress, tokenID.value, nameNFT.value, descriptionNFT.value, imageHASH, metadataHash)
 }
 
 
