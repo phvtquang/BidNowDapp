@@ -50,56 +50,58 @@ async function mintNFT() {
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <div class="bg-gradient-to-br from-purple-500 to-blue-500 h-screen">
+    <div class="container mx-auto py-10">
+      <h1 class="text-5xl font-bold text-white text-center mb-10">Get started by convert your digital art into NFTs</h1>
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/3 mx-auto">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="username">
+            NFT Name
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            v-model="nameNFT" type="text" placeholder="Enter NFT name">
+        </div>
 
-      <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="username">
-          NFT Name
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          v-model="nameNFT" type="text" placeholder="Enter NFT name">
-      </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="username">
+            NFT Description
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            v-model="descriptionNFT" type="text" placeholder="Enter NFT Description">
+        </div>
 
-      <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="username">
-          NFT Description
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          v-model="descriptionNFT" type="text" placeholder="Enter NFT Description">
-      </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2" for="username">
+            Token ID
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            v-model="tokenID" type="text" placeholder="Enter unique Token ID">
+        </div>
 
-      <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="username">
-          Token ID
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          v-model="tokenID" type="text" placeholder="Enter unique Token ID">
-      </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 font-bold mb-2" for="photo">
+            Upload Image
+          </label>
+          <input class="block" type="file" @change="onFileSelect">
+        </div>
 
-      <div class="mb-6">
-        <label class="block text-gray-700 font-bold mb-2" for="photo">
-          Upload Image
-        </label>
-        <input class="block" type="file" @change="onFileSelect">
-      </div>
+        <img class="h-40 w-60" v-if="previewUrl" :src="previewUrl" />
 
-      <img class="h-40 w-60" v-if="previewUrl" :src="previewUrl" />
-
-
-      <div class="flex items-center justify-between">
-        <button @click="mintNFT"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button">
-          Mint NFT
-        </button>
-      </div>
+        <br>
+        <div class="flex items-center justify-between">
+          <button @click="mintNFT"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button">
+            Mint NFT
+          </button>
+        </div>
 
 
-    </form>
+      </form>
+    </div>
   </div>
 </template>
 

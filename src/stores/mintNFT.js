@@ -59,7 +59,7 @@ export const useMintNFTStore = defineStore('MintNFTStore', {
             }
         },
 
-        // UPLOAD TO BACKEND
+        // MINTNFT - UPLOAD TO BACKEND
         async uploadToBackend(nftOwnerAddress, nftContract, tokenId, name, description, ipfsHashImage, ipfsHashMetadata) {
             const url = 'http://localhost:8080/api/v1/nft/mint-nft';
             const data = {
@@ -76,8 +76,6 @@ export const useMintNFTStore = defineStore('MintNFTStore', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://localhost:5173',
-
                 },
                 body: JSON.stringify(data),
             })

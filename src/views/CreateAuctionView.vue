@@ -26,56 +26,60 @@ async function createNewAuction() {
 </script>
 
 <template>
-    <div class="flex items-center justify-center h-screen">
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="bg-gradient-to-br from-purple-500 to-blue-500 h-screen">
+        <div class="container mx-auto py-10">
+            <h1 class="text-5xl font-bold text-white text-center mb-10">
+                Ready to put NFT on trading
+            </h1>
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/3 mx-auto">
+                <div class=" mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="username">
+                        NFT Contract
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        v-model="NFTContract" type="text" placeholder="Enter NFT Contract">
+                </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="username">
-                    NFT Contract
-                </label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    v-model="NFTContract" type="text" placeholder="Enter NFT Contract">
-            </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="username">
+                        TokenID
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        v-model="TokenID" type="number" placeholder="Enter NFT TokenID">
+                </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="username">
-                    TokenID
-                </label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    v-model="TokenID" type="number" placeholder="Enter NFT TokenID">
-            </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="username">
+                        Initial Price ( WEI )
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        v-model="InitialPrice" type="number" placeholder="Enter Initial Price ( WEI )">
+                </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="username">
-                    Initial Price ( WEI )
-                </label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    v-model="InitialPrice" type="number" placeholder="Enter Initial Price ( WEI )">
-            </div>
+                <div class="mb-4">
+                    <label for="opendatetime">Open time: </label>
+                    <input type="datetime-local" v-model="OpenDatetime" />
+                </div>
 
-            <div class="mb-4">
-                <label for="opendatetime">Open time: </label>
-                <input type="datetime-local" v-model="OpenDatetime" />
-            </div>
-
-            <div class="mb-4">
-                <label for="closedatetime">Close time: </label>
-                <input type="datetime-local" v-model="CloseDatetime" />
-            </div>
+                <div class="mb-4">
+                    <label for="closedatetime">Close time: </label>
+                    <input type="datetime-local" v-model="CloseDatetime" />
+                </div>
 
 
 
-            <div class="flex items-center justify-between">
-                <button @click="createNewAuction"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="button">
-                    Create a new Auction
-                </button>
-            </div>
+                <div class="flex items-center justify-between">
+                    <button @click="createNewAuction"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="button">
+                        Create a new Auction
+                    </button>
+                </div>
 
-        </form>
+            </form>
+        </div>
     </div>
 </template>

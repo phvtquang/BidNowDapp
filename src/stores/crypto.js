@@ -18,6 +18,12 @@ export const useCryptoStore = defineStore('cryptoStore', {
             TestSMCContractAddress: '0x3eD53CD7197C5eb9d3157101620384139d74CED3',
             BQKTokenContractAddress: '0x82e07ff4b6d756f0537D4B09f3b722c249296C04',
             NFTTokenContractAddress: '0x623FDdb7FB8cB703b1bCD3ba33A809CFCe8BAc52',
+
+            // GANACHE
+            // TestSMCContractAddress: '0x520DaCe079d3a9FA44E7e49cd8f9819a035c78C4',
+            // BQKTokenContractAddress: '0x2BBe7a7526C685327B288f353B3B9803E5412cA2',
+            // NFTTokenContractAddress: '0x172be9a16E8c112bcd8ddd33a7E0fcFfb77FDd95',
+
             // NFT
             totalSupply: null,
 
@@ -111,9 +117,15 @@ export const useCryptoStore = defineStore('cryptoStore', {
             const url = 'http://localhost:8080/api/v1/bidnow/create-new-auction?transactionHash=' + transactionHash;
             fetch(url, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             })
                 .then((response) => response.json())
                 .catch((error) => console.error(error));
         }
+
+
+
     }
 })
